@@ -22,14 +22,10 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
         };
       case 'production':
         return {
-          type: 'postgres',
-          url: process.env.DATABASE_URL,
+          type:'sqlite',
+          database: 'prod.sqlite',
           synchronize: false,
-          migrationsRun: true,
-          entities: ['**/*.entity.js'],
-          ssl: {
-            rejectUnauthorized: false
-          }
+          autoLoadEntities: true
         }
     }
   }
